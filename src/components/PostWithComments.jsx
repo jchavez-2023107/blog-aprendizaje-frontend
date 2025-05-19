@@ -12,11 +12,14 @@ export default function PostWithComments({ post }) {
   };
 
   return (
-    <div className="post-card flex flex-col md:flex-row">
-      <div className="md:w-2/3">
+    <div className="post-card">
+      {/* IZQUIERDA */}
+      <div className="post-card__left">
         <h2 className="post-card__title">{post.title}</h2>
-        <p className="post-card__date">{post.createdAt}</p>
+        <p className="post-card__date">Fecha de creación: {post.createdAt}</p>
         <p className="post-card__content">{post.content}</p>
+
+        {/* Links */}
         {post.links?.length > 0 && (
           <div className="post-card__links">
             {post.links.map((url, idx) => (
@@ -36,44 +39,53 @@ export default function PostWithComments({ post }) {
             ))}
           </div>
         )}
+
+        {/* FORMULARIO */}
+        <form onSubmit={handleSubmit} className="post-card__form">
+          <input
+            type="text"
+            placeholder="Tu nombre"
+            value={form.name}
+            onChange={(e) =>
+              setForm((f) => ({ ...f, name: e.target.value }))
+            }
+            className="post-card__input"
+            required
+          />
+          <textarea
+            placeholder="Tu comentario"
+            value={form.text}
+            onChange={(e) =>
+              setForm((f) => ({ ...f, text: e.target.value }))
+            }
+            className="post-card__textarea"
+            required
+          />
+          <button type="submit" className="post-card__submit">
+            Enviar comentario
+          </button>
+        </form>
       </div>
 
-      <div className="md:w-1/3 md:pl-6 mt-6 md:mt-0">
+      {/* DERECHA */}
+      <div className="post-card__right">
         {loading ? (
           <p>Cargando comentarios…</p>
         ) : (
-          <div className="space-y-4">
-            {comments.map(c => (
-              <div key={c._id} className="p-3 border rounded">
+          <div className="post-card__comments">
+            {comments.map((c) => (
+              <div key={c._id} className="post-card__comment">
                 <p className="font-semibold">
-                  {c.name} <span className="text-sm text-gray-500">({c.createdAt})</span>
+                  {c.name}{' '}
+                  <span className="text-sm text-gray-500">
+                    ({c.createdAt})
+                  </span>
                 </p>
                 <p>{c.text}</p>
               </div>
             ))}
           </div>
         )}
-
-        <form onSubmit={handleSubmit} className="mt-4 space-y-2">
-          <input
-            type="text"
-            placeholder="Tu nombre"
-            value={form.name}
-            onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-            className="w-full border p-2 rounded"
-            required
-          />
-          <textarea
-            placeholder="Tu comentario"
-            value={form.text}
-            onChange={e => setForm(f => ({ ...f, text: e.target.value }))}
-            className="w-full border p-2 rounded"
-            required
-          />
-          <button type="submit" className="post-card__comments-button">
-            Enviar comentario
-          </button>
-        </form>
       </div>
     </div>
   );

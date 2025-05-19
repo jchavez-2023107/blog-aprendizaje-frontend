@@ -1,107 +1,130 @@
-/* Elimina subrayados y colores de enlace */
-.course-card {
-  text-decoration: none;
-  color: inherit;
+/* ============ GLOBAL ============ */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(145deg, #e6e9f0, #eef1f5);
+  margin: 0;
+}
+
+/* ============ POST-CARD ============ */
+.post-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  background: #ffffff;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  background: linear-gradient(135deg, #112661, #4f117b);
+}
+
+.post-card__left {
+  flex: 2;
+  min-width: 250px;
+  background: linear-gradient(135deg, #2b478d, #842bc4);
+  padding: 1.5rem;
+  border-radius: 8px;
+  color: #ffffff;
+}
+
+.post-card__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.post-card__date {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  color: #e0e0e0;
+}
+
+.post-card__content {
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: justify;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.post-card__links {
+  margin-top: 1rem;
+}
+
+.post-card__link {
+  display: inline-block;
+  margin-right: 0.75rem;
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.post-card__right {
+  flex: 1;
+  min-width: 240px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Comentarios */
+.post-card__comments {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 400px;
+  margin-bottom: 1rem;
+}
+
+.post-card__comment {
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(to right, #f8f9fb, #e4ecf7);
+  border: 1px solid #d5dae0;
+  color: #333;
+}
+
+/* Formulario */
+.post-card__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.post-card__input,
+.post-card__textarea {
+  width: 100%;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  padding: 0.4rem 0.005rem;
+  font-size: 0.85rem;
+  color: #333;
+}
+
+.post-card__textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.post-card__submit {
+  background: #142859;
+  color: #fff;
+  border: none;
+  padding: 0.5rem;
+  font-weight: 600;
+  border-radius: 6px;
   cursor: pointer;
 }
 
-/* Asegura que ningún descendiente herede subrayado */
-.course-card,
-.course-card * {
-  text-decoration: none !important;
+.post-card__submit:hover {
+  background: #0f1d44;
 }
 
-/* (Tu CSS corporativo existente) */
-.course-card {
-  position: relative;
-  display: flex;
-  background: #ffffff;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-  margin-bottom: 2rem;
-  min-height: 200px;
-}
-
-/* Profesor / Imagen Lateral */
-.course-card__professor {
-  background: #142859;
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-width: 160px;
-}
-.course-card__professor h4 {
-  color: #ffffff;
-  font-size: 0.9rem;
-  margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-}
-.course-card__professor img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  object-position: top center;   /* centra la imagen dentro del contenedor */
-  border-radius: 50%;
-  border: 4px solid #ffffff;
-}
-.course-card__professor span {
-  margin-top: 0.5rem;
-  color: #ffffff;
-  font-weight: 600;
-}
-
-/* Detalle del curso */
-.course-card__details {
-  flex: 1;
-  padding: 1.5rem;
-  position: relative;
-}
-.course-card__logo {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  width: 80px;
-}
-.course-card__logo img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.course-card__title {
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: #142859;
-  text-transform: uppercase;
-  margin: 0 0 0.75rem;
-}
-.course-card__content {
-  font-size: 1rem;
-  color: #333333;
-  line-height: 1.6;
-}
-.course-card__contact {
-  margin-top: 1.5rem;
-  font-weight: 600;
-  color: #142859;
-}
-
-/* Curve Divider (opcional) */
-.course-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 160px;
-  width: 2rem;
-  height: 100%;
-  background: radial-gradient(circle at left center, #c32dc3 40%, transparent 100%);
-}
-
-/* Título centrado para la página de posts */
+/* ============ HOMEPAGE ============ */
 .home-title {
   text-align: center;
   font-size: 2.5rem;
@@ -110,61 +133,102 @@
   margin-bottom: 2rem;
 }
 
-/* Contenedor de cada post como tarjeta */
-.post-card {
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
+/* Ajuste visual para HomePage y PostsPage */
+body,
+html {
+  background: linear-gradient(to right, #e0eafc, #cfdef3);
+  min-height: 100%;
 }
 
-/* Título del post */
-.post-card__title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #142859;
+.course-card {
+  display: flex;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease;
+  margin-bottom: 2rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.course-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Lado del profesor (izquierda) */
+.course-card__professor {
+  background: #142859;
+  color: #fff;
+  padding: 1.5rem;
+  min-width: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.course-card__professor h4 {
+  font-size: 0.9rem;
+  margin: 0 0 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.course-card__professor img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 50%;
+  border: 3px solid #ffffff;
   margin-bottom: 0.5rem;
 }
 
-/* Fecha del post */
-.post-card__date {
-  font-size: 0.9rem;
-  color: #666666;
-  margin-bottom: 1rem;
+.course-card__professor span {
+  font-weight: bold;
+  font-size: 0.95rem;
 }
 
-/* Contenido */
-.post-card__content {
+/* Detalles del curso (derecha) */
+.course-card__details {
+  flex: 1;
+  padding: 1.5rem;
+  position: relative;
+}
+
+.course-card__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #142859;
+  margin-bottom: 0.75rem;
+}
+
+.course-card__content {
   font-size: 1rem;
   color: #333333;
-  line-height: 1.6;
+  line-height: 1.5;
   margin-bottom: 1rem;
 }
 
-/* Enlaces a repos */
-.post-card__links {
-  margin-bottom: 1rem;
-}
-.post-card__link {
-  margin-right: 1rem;
+.course-card__contact {
   font-weight: 600;
+  font-size: 0.95rem;
   color: #142859;
 }
-.post-card__link:hover {
-  text-decoration: underline;
+
+/* Logo en esquina */
+.course-card__logo {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 70px;
 }
 
-/* Botón de cargar comentarios */
-.post-card__comments-button {
-  background: #142859;
-  color: #ffffff;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  cursor: pointer;
+.course-card__logo img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
-.post-card__comments-button:hover {
-  background: #0f2248;
-}
-
